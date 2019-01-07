@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DataStructure.LineTable;
 using UnityEngine;
 
-public interface ILineTable<T>
+interface ILineTable<T>
 {
     /// <summary>
     /// 插入一个元素
@@ -14,13 +15,13 @@ public interface ILineTable<T>
     /// 删除元素
     /// </summary>
     /// <param name="index">所有下表</param>
-    void Delete(int index);
+    void DeleteByIndex(int index);
 
     /// <summary>
     /// 删除指定元素  
     /// </summary>
     /// <param name="item"></param>
-    void Delete(T item);
+    void DeleteByItem(T item, bool isAll);
 
     /// <summary>
     /// 索引器
@@ -32,14 +33,14 @@ public interface ILineTable<T>
     /// <summary>
     /// 获取长度
     /// </summary>
-    void GetLength();
+    int GetLength();
 
     /// <summary>
     /// 查找对象在列表中的下标
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
-    int FindOfIndex(T item);
+    SequenceList<int> FindOfIndex(T item,bool isAll);
 
     /// <summary>
     /// 是否为空

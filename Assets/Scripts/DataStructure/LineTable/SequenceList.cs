@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Linq;
+using UnityEngine;
+
 
 namespace DataStructure.LineTable
 {
@@ -26,7 +29,7 @@ namespace DataStructure.LineTable
             //在末尾添加一个元素
             if (index == -100000)
             {
-                Add(item);
+                Insect(item, count);
                 return;
             }
 
@@ -39,6 +42,7 @@ namespace DataStructure.LineTable
             if (count == 0 && index == 0)
             {
                 data[0] = item;
+                count = 1;
                 return;
             }
 
@@ -75,58 +79,134 @@ namespace DataStructure.LineTable
             return;
         }
 
-        private void Add(T item)
+        /// <summary>
+        /// 删除指定位置的元素
+        /// </summary>
+        /// <param name="index"></param>
+        public void DeleteByIndex(int index = -10000)
         {
-            if (count == data.Length)
+            //默认删除末尾值
+            if (index == -10000)
             {
-                Debug.Log("列表已满");
+                DeleteByIndex(count-1);
+                return;
             }
-            else
+
+            if (!isIndexInCount(index))
             {
-                data[count] = item;
-                count++;
+                return;
             }
+
+            for (int i = index + 1; i < count; i++)
+            {
+                data[i - 1] = data[i];
+            }
+
+            count--;
         }
 
-        public void Delete(int index)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Delete(T item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public T this[int index] => throw new System.NotImplementedException();
-
-        public void GetLength()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public int FindOfIndex(T item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool IsEmpty()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Clear()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void PrintList()
+        /// <summary>
+        /// 删除指定元素
+        /// </summary>
+        /// <param name="item"></param>
+        public void DeleteByItem(T item, bool isAll = true)
         {
             for (int i = 0; i < count; i++)
             {
-                if(data[i] != null)
-                    Debug.Log("data[" + i.ToString() + "]:" + data[i].ToString());
+                if (data[i].Equals(item))
+                {
+                    DeleteByIndex(i);
+                    if (!isAll)
+                        return;
+                }
             }
+        }
+
+        /// <summary>
+        /// 判断index是否在[0,count-1]之间
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        private bool isIndexInCount(int index){
+            if (0 > index || index > count - 1)
+            {
+                Debug.Log("下标超出范围");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 索引器
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T this[int index]
+        {
+            get { return data[index]; }
+        }
+
+        /// <summary>
+        /// 列表长度
+        /// </summary>
+        /// <returns></returns>
+        public int GetLength()
+        {
+            return count;
+        }
+
+        /// <summary>
+        /// 查找元素下标，未找到返回-1
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public SequenceList<int> FindOfIndex(T item, bool isAll = true)
+        {
+            SequenceList<int> data = new SequenceList<int>();
+            for (int i = count - 1; i >= 0; i--)
+            {
+                if (data[i].Equals(item))
+                {
+                    data.Insect(i);
+                    if (!isAll)
+                        return data;
+                }
+            }
+            if(data.count == 0)
+                data.Insect(-1);
+            return data;
+        }
+
+        /// <summary>
+        /// 列表是否为空
+        /// </summary>
+        /// <returns></returns>
+        public bool IsEmpty()
+        {
+            return count == 0 ? true : false;
+        }
+
+        /// <summary>
+        /// 清空列表
+        /// </summary>
+        public void Clear()
+        {
+            count = 0;
+            data = new T[data.Length];
+        }
+
+        /// <summary>
+        /// 打印列表
+        /// </summary>
+        public void PrintList()
+        {
+            string str = "列表数据:\n";
+            for (int i = 0; i < count; i++)
+            {
+                if (data[i] != null)
+                    str = string.Concat(str,"data[", i.ToString() + "]:" , data[i].ToString(),"\n" );
+            }
+            Debug.Log(str);
         }
     }
 }
