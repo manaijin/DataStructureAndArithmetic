@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Util\GUIList.cs" />
     <Compile Include="Assets\Scripts\Util\GUITextPanel.cs" />
     <None Include="Assets\Resources\Text\线性表.txt" />
+    <None Include="Assets\Resources\Text\链表.txt" />
     <None Include="Assets\Resources\Text\顺序表.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/DocunmentProject/Unity3D/DataStructureAndArithmetic/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

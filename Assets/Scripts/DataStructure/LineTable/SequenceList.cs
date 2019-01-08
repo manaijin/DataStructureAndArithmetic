@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 
@@ -143,7 +144,14 @@ namespace DataStructure.LineTable
         /// <returns></returns>
         public T this[int index]
         {
-            get { return data[index]; }
+            get
+            {
+                if (isIndexInCount(index))
+                {
+                    return data[index];
+                }
+                return default(T);
+            }
         }
 
         /// <summary>
@@ -200,11 +208,18 @@ namespace DataStructure.LineTable
         /// </summary>
         public void PrintList()
         {
-            string str = "列表数据:\n";
+            StringBuilder str = new StringBuilder("列表数据:\n");
             for (int i = 0; i < count; i++)
             {
                 if (data[i] != null)
-                    str = string.Concat(str,"data[", i.ToString() + "]:" , data[i].ToString(),"\n" );
+                {
+                    str.Append(str);
+                    str.Append("data[");
+                    str.Append(i.ToString());
+                    str.Append("]:");
+                    str.Append(data[i].ToString());
+                    str.Append("\n");
+                }
             }
             Debug.Log(str);
         }
