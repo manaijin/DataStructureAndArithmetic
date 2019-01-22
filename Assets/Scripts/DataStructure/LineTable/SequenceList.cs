@@ -80,10 +80,6 @@ namespace DataStructure.LineTable
             return;
         }
 
-        /// <summary>
-        /// 删除指定位置的元素
-        /// </summary>
-        /// <param name="index"></param>
         public void DeleteByIndex(int index = -10000)
         {
             //默认删除末尾值
@@ -93,7 +89,7 @@ namespace DataStructure.LineTable
                 return;
             }
 
-            if (!isIndexInCount(index))
+            if (!IsIndexInCount(index))
             {
                 return;
             }
@@ -106,10 +102,6 @@ namespace DataStructure.LineTable
             count--;
         }
 
-        /// <summary>
-        /// 删除指定元素
-        /// </summary>
-        /// <param name="item"></param>
         public void DeleteByItem(T item, bool isAll = true)
         {
             for (int i = 0; i < count; i++)
@@ -128,7 +120,7 @@ namespace DataStructure.LineTable
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        private bool isIndexInCount(int index){
+        private bool IsIndexInCount(int index){
             if (0 > index || index > count - 1)
             {
                 Debug.Log("下标超出范围");
@@ -146,7 +138,7 @@ namespace DataStructure.LineTable
         {
             get
             {
-                if (isIndexInCount(index))
+                if (IsIndexInCount(index))
                 {
                     return data[index];
                 }
@@ -167,22 +159,23 @@ namespace DataStructure.LineTable
         /// 查找元素下标，未找到返回-1
         /// </summary>
         /// <param name="item"></param>
+        /// <param name="isAll">是否返回所有结果</param>
         /// <returns></returns>
         public SequenceList<int> FindOfIndex(T item, bool isAll = true)
         {
-            SequenceList<int> data = new SequenceList<int>();
+            SequenceList<int> list = new SequenceList<int>();
             for (int i = count - 1; i >= 0; i--)
             {
                 if (data[i].Equals(item))
                 {
-                    data.Insect(i);
+                    list.Insect(i);
                     if (!isAll)
-                        return data;
+                        return list;
                 }
             }
-            if(data.count == 0)
-                data.Insect(-1);
-            return data;
+            if(list.count == 0)
+                list.Insect(-1);
+            return list;
         }
 
         /// <summary>
@@ -194,26 +187,19 @@ namespace DataStructure.LineTable
             return count == 0 ? true : false;
         }
 
-        /// <summary>
-        /// 清空列表
-        /// </summary>
         public void Clear()
         {
             count = 0;
             data = new T[data.Length];
         }
 
-        /// <summary>
-        /// 打印列表
-        /// </summary>
-        public void PrintList()
+        public void PrintList(string prefixion = "")
         {
-            StringBuilder str = new StringBuilder("列表数据:\n");
+            StringBuilder str = new StringBuilder(prefixion);
             for (int i = 0; i < count; i++)
             {
                 if (data[i] != null)
                 {
-                    str.Append(str);
                     str.Append("data[");
                     str.Append(i.ToString());
                     str.Append("]:");

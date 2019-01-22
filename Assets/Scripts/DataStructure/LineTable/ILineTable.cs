@@ -8,6 +8,7 @@ interface ILineTable<T>
     /// <summary>
     /// 插入一个元素
     /// </summary>
+    /// <param name="item"></param>
     /// <param name="index"></param>
     void Insect(T item,int index);
 
@@ -21,6 +22,7 @@ interface ILineTable<T>
     /// 删除指定元素  
     /// </summary>
     /// <param name="item"></param>
+    /// <param name="isAll"></param>
     void DeleteByItem(T item, bool isAll);
 
     /// <summary>
@@ -39,6 +41,7 @@ interface ILineTable<T>
     /// 查找对象在列表中的下标
     /// </summary>
     /// <param name="item"></param>
+    /// <param name="isAll"></param>
     /// <returns></returns>
     SequenceList<int> FindOfIndex(T item,bool isAll);
 
@@ -55,6 +58,7 @@ interface ILineTable<T>
 
     /// <summary>
     /// 打印列表
+    /// <param name="prefixion">前缀</param>
     /// </summary>
-    void PrintList();
+    void PrintList(string prefixion);
 }

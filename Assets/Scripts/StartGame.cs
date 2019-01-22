@@ -11,7 +11,7 @@ public class StartGame : MonoBehaviour
 
     private GameObject root;
     private Button LineTable;
-    private GameObject LineTablePanel;
+    private Transform LineTablePanel;
 
     void Start()
     {
@@ -47,25 +47,28 @@ public class StartGame : MonoBehaviour
     private void OnClickLineTable()
     {
         if(!LineTablePanel)
-            LineTablePanel = LoadResources.LoadPrefab("Prefab/LineTablePanel");
+            LineTablePanel = LoadResources.LoadPrefab("Prefab/LineTablePanel").transform;
 
         if (LineTablePanel && root)
         {
-            LineTablePanel.transform.parent = root.transform;
+            LineTablePanel.parent = root.transform;
+            LineTablePanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            string s = LoadResources.LoadText("Text/线性表");
+            LineTablePanel.Find("TextPanel/Label").GetComponent<Text>().text = s;
         }
 
         SequenceList<int> data = new SequenceList<int>(100);
-        Debug.Log(data.IsEmpty());
+        Debug.Log("顺序表是否为空："+data.IsEmpty());
         data.Insect(10);
         data.Insect(10);
         data.Insect(30,0);
         data.Insect(10, 10);
-        data.PrintList();
+        data.PrintList("顺序表初始值：\n");
         data.DeleteByIndex(0);
-        data.PrintList();
-        data.FindOfIndex(0,false).PrintList();
-        data.FindOfIndex(0).PrintList();
-        Debug.Log(data.IsEmpty());
+        data.PrintList("删除第一个元素：\n");
+        data.FindOfIndex(0,false).PrintList("表中等于0的第一个下标：");
+        data.FindOfIndex(0).PrintList("表中等于0的所有下标：");
+        Debug.Log("顺序表是否为空：" + data.IsEmpty());
     }
 
     void OnDestroy()
