@@ -35,7 +35,7 @@ public class LoadResources:MonoBehaviour
     public static string LoadText(string path)
     {
         string s = "";
-        TextAsset textFile = Resources.Load("ObjectsInfoList") as TextAsset;
+        TextAsset textFile = Resources.Load<TextAsset>(path);
         if (textFile != null)
         {
             s = textFile.text;

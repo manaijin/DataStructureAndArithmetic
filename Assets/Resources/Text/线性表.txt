@@ -1,21 +1,18 @@
-	���Ա���˳��洢��ָ��һ���ַ�����Ĵ洢��Ԫ���δ洢���Ա��еĸ���Ԫ�أ�ʹ�����Ա����߼��ṹ�����ڵ�Ԫ�ش洢�������������洢��Ԫ�У�����ͨ������Ԫ�������洢������������ӦԪ��֮���߼��ϵ����ڹ�ϵ������˳��洢�ṹ�洢�����Ա�ͨ�����Ϊ˳����� 
-	
-	˳��洢�����Ա����ص㣺 
-�� ���Ա����߼�˳��������˳��һ��; 
-�� ����Ԫ��֮��Ĺ�ϵ����Ԫ���ڼ�����ڡ�����λ�����ڡ������֡�
+	线性表的顺序存储是指用一组地址连续的存储单元依次存储线性表中的各个元素，使得线性表在逻辑结构上相邻的元素存储在连续的物理存储单元中，即：通过数据元素物理存储的连续性来反应元素之间逻辑上的相邻关系。采用顺序存储结构存储的线性表通常简称为顺序表。 
+	顺序存储的线性表的特点： 
+◆ 线性表的逻辑顺序与物理顺序一致; 
+◆ 数据元素之间的关系是以元素在计算机内“物理位置相邻”来体现。
 
-	C#���ṩ��List<T>����һ�����Ա���
-	
-	�������ܣ�
-���������:void Insert(int index);
-���Ƴ�����:void Delete(int index);
-���Ƴ�����:void Delete(T object);
-��������:T this[int index]{get;}
-����ȡ����:int GetLength();
-������:int Find(T value);
-���Ƿ�Ϊ��:bool IsEmpty();
-�����:void Clear();
-	���ӹ��ܣ�
-����ӡ�б���void PrintList(Handle );
-����ӡ�б���void PrintList();
+	C#中提供的List<T>就是一种线性表。	
+	基本功能：
+◆插入对象:void Insert(int index);
+◆移除对象:void Delete(int index);
+◆移除对象:void Delete(T object);
+◆索引器:T this[int index]{get;}
+◆获取长度:int GetLength();
+◆查找:int Find(T value);
+◆是否为空:bool IsEmpty();
+◆清空:void Clear();
+	附加功能：
+◆打印列表：void PrintList(string prefixion);
 

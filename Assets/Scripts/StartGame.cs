@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DataStructure.LineTable;
+﻿using DataStructure.LineTable;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,8 +50,7 @@ public class StartGame : MonoBehaviour
         {
             LineTablePanel.parent = root.transform;
             LineTablePanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-            string s = LoadResources.LoadText("Text/线性表");
-            LineTablePanel.Find("TextPanel/Label").GetComponent<Text>().text = s;
+            LineTablePanel.Find("TextPanel/Label").GetComponent<Text>().text = LoadResources.LoadText("Text/线性表");
         }
 
         SequenceList<int> data = new SequenceList<int>(100);
@@ -68,7 +64,7 @@ public class StartGame : MonoBehaviour
         data.PrintList("删除第一个元素：\n");
         data.FindOfIndex(0,false).PrintList("表中等于0的第一个下标：");
         data.FindOfIndex(0).PrintList("表中等于0的所有下标：");
-        Debug.Log("顺序表是否为空：" + data.IsEmpty());
+        Debug.Log("顺序表是否为空："+data.IsEmpty());
     }
 
     void OnDestroy()
