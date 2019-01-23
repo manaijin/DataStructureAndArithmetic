@@ -6,7 +6,7 @@ public class StartGame : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private GameObject root;
+    private MainPageModule root;
     private Button LineTable;
     private Transform LineTablePanel;
 
@@ -14,9 +14,9 @@ public class StartGame : MonoBehaviour
     {
         Screen.SetResolution(1920,1080,false);
         Init();
-        if (root)
+        if (root.page)
         {
-            GUIList.SetItemSize(200,100, root.transform.Find("panel_Main/img_list"));
+            GUIList.SetItemSize(200,100, root.page.transform.Find("panel_Main/V_list"));
         }
         else
         {
@@ -26,8 +26,8 @@ public class StartGame : MonoBehaviour
 
     private void Init()
     {
-        root = LoadResources.LoadPrefab("Prefab/Root");
-        LineTable = root.transform.Find("panel_Main/img_list/content/LineTable").GetComponent<Button>();
+        root = new MainPageModule();
+        LineTable = root.page.transform.Find("panel_Main/V_list/content/LineTable").GetComponent<Button>();
         AddListener();
     }
 
@@ -46,9 +46,9 @@ public class StartGame : MonoBehaviour
         if(!LineTablePanel)
             LineTablePanel = LoadResources.LoadPrefab("Prefab/LineTablePanel").transform;
 
-        if (LineTablePanel && root)
+        if (LineTablePanel && root.page)
         {
-            LineTablePanel.parent = root.transform;
+            LineTablePanel.parent = root.page.transform;
             LineTablePanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             LineTablePanel.Find("TextPanel/Label").GetComponent<Text>().text = LoadResources.LoadText("Text/线性表");
         }
