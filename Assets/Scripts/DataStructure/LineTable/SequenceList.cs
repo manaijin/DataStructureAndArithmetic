@@ -83,6 +83,10 @@ namespace DataStructure.LineTable
             return;
         }
 
+        /// <summary>
+        /// 删除指定index元素，默认删除最后的元素
+        /// </summary>
+        /// <param name="index"></param>
         public void DeleteByIndex(int index = -10000)
         {
             //默认删除末尾值

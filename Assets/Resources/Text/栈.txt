@@ -1,0 +1,15 @@
+栈是一种操作受限的线性表，在表尾进行插入、删除操作。
+
+操作原则：先进后出FILO
+
+基本结构：
+栈顶（Top）
+栈底（Bottom）
+
+基本操作：
+1.void Push(T item);
+2.T Pop();
+3.T Peek();
+4.void Clear();
+5.bool IsEmpty();
+6.int GetLength();

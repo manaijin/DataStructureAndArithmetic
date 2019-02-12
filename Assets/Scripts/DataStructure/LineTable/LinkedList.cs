@@ -88,11 +88,14 @@ namespace DataStructure.LineTable
         }
 
         /// <summary>
-        /// 删除单个下标
+        /// 删除单个下标,默认删除最后一个对象
         /// </summary>
         /// <param name="index"></param>
-        public void DeleteByIndex(int index)
+        public void DeleteByIndex(int index = -1)
         {
+            if (index == -1 && Count > 0)
+                DeleteByIndex(Count - 1);
+
             if (!IsIndexInCount(index))
                 return;
 

@@ -30,7 +30,7 @@ namespace Framwork
         /// 移除所有子节点
         /// </summary>
         /// <param name="obj"></param>
-        public static void removeAllChilds(Transform  obj)
+        public static void RemoveAllChilds(Transform  obj)
         {
             if (obj == null)
             {

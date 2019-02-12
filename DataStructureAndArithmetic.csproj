@@ -662,8 +662,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DataStructure\LineTable\ILineTable.cs" />
+    <Compile Include="Assets\Scripts\DataStructure\LineTable\IStack.cs" />
     <Compile Include="Assets\Scripts\DataStructure\LineTable\LinkedList.cs" />
     <Compile Include="Assets\Scripts\DataStructure\LineTable\SequenceList.cs" />
+    <Compile Include="Assets\Scripts\DataStructure\LineTable\Stack.cs" />
     <Compile Include="Assets\Scripts\Framwork\Component.cs" />
     <Compile Include="Assets\Scripts\Framwork\IComponent.cs" />
     <Compile Include="Assets\Scripts\Framwork\IPage.cs" />
@@ -673,11 +675,12 @@
     <Compile Include="Assets\Scripts\Module\MainPage\MainPageModule.cs" />
     <Compile Include="Assets\Scripts\ScreenSet.cs" />
     <Compile Include="Assets\Scripts\StartGame.cs" />
-    <Compile Include="Assets\Scripts\Util\CSVUtil.cs" />
     <Compile Include="Assets\Scripts\Util\GUIList.cs" />
     <Compile Include="Assets\Scripts\Util\GUITextPanel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Text\循环链表.txt" />
+    <None Include="Assets\Resources\Text\栈.txt" />
     <None Include="Assets\Resources\Text\线性表.txt" />
     <None Include="Assets\Resources\Text\链表.txt" />
     <None Include="Assets\Resources\Text\顺序表.txt" />

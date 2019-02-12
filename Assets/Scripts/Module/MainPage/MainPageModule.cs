@@ -1,4 +1,5 @@
-﻿using DataStructure.LineTable;
+﻿using System.Collections.Generic;
+using DataStructure.LineTable;
 using Framwork;
 using Module.Component;
 using UnityEngine.UI;
@@ -30,7 +31,8 @@ public class MainPageModule:Panel
         VList.itemFunction = new VLIst.SetItemFunction(ListFunction);
         VList.dataCount = 1;
         //TestLinkedList();
-        TestDoubleLinkedList();
+        //TestDoubleLinkedList();
+        TestStack();
     }
 
     public override void AddListener()
@@ -79,6 +81,7 @@ public class MainPageModule:Panel
 
     private void TestLineTable()
     {
+        Debug.Log("--------------顺序表测试");
         SequenceList<int> data = new SequenceList<int>(100);
         Debug.Log("顺序表是否为空：" + data.IsEmpty());
         data.Insert(10);
@@ -95,7 +98,8 @@ public class MainPageModule:Panel
 
     private void TestLinkedList()
     {
-        LinkedList<int> data = new LinkedList<int>(100);
+        Debug.Log("--------------单链表测试");
+        DataStructure.LineTable.LinkedList<int> data = new DataStructure.LineTable.LinkedList<int>(100);
         Debug.Log("链表是否为空：" + data.IsEmpty());
         data.PrintList();
         data.Insert(1);
@@ -113,6 +117,7 @@ public class MainPageModule:Panel
 
     private void TestDoubleLinkedList()
     {
+        Debug.Log("--------------双链表测试");
         DoubleLinkedList<int> data = new DoubleLinkedList<int>(100);
         Debug.Log("双链表是否为空：" + data.IsEmpty());
         data.PrintList();
@@ -127,6 +132,39 @@ public class MainPageModule:Panel
         data.FindOfIndex(0, false).PrintList("表中等于0的第一个下标：");
         data.FindOfIndex(0).PrintList("表中等于0的所有下标：");
         Debug.Log("顺序表是否为空：" + data.IsEmpty());
+    }
+
+    private void TestStack()
+    {
+        Debug.Log("--------------BCL的Stack测试");
+        Stack<char> stack = new Stack<char>();
+        stack.Push('a');
+        stack.Push('b');
+        stack.Push('c');
+        Debug.Log(stack.Count);
+        char temp = stack.Pop();
+        Debug.Log("pop出：" + temp + ",剩余：" + stack.Count);
+
+        Debug.Log("---------------顺序表实现的Stack测试");
+        Stack_SequenceList<char> stack2 = new Stack_SequenceList<char>();
+        stack2.Push('a');
+        stack2.Push('b');
+        stack2.Push('c');
+        stack2.PrintStack("stack初始值：\n");
+        temp = stack2.Pop();
+        Debug.Log("pop出：" + temp);
+        stack2.PrintStack("stack值：\n");
+
+        Debug.Log("---------------单链表实现的Stack测试");
+        Stack_SequenceList<char> stack3 = new Stack_SequenceList<char>();
+        stack3.Push('a');
+        stack3.Push('b');
+        stack3.Push('c');
+        stack3.PrintStack("stack初始值：\n");
+        temp = stack3.Pop();
+        Debug.Log("pop出：" + temp);
+        stack3.PrintStack("stack值：\n");
+
     }
 
     public override void Dispose()

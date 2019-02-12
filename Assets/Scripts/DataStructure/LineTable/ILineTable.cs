@@ -2,7 +2,7 @@
 
 namespace DataStructure.LineTable
 {
-    interface ILineTable<T>
+    internal interface ILineTable<T>
     {
         /// <summary>
         /// 插入一个元素

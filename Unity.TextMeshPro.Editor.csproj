@@ -726,6 +726,8 @@
     <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_TexturePostProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Text\循环链表.txt" />
+    <None Include="Assets\Resources\Text\栈.txt" />
     <None Include="Assets\Resources\Text\线性表.txt" />
     <None Include="Assets\Resources\Text\链表.txt" />
     <None Include="Assets\Resources\Text\顺序表.txt" />
