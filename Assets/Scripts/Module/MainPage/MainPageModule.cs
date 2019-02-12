@@ -148,7 +148,9 @@ public class MainPageModule:Panel
         Debug.Log("---------------顺序表实现的Stack测试");
         Stack_SequenceList<char> stack2 = new Stack_SequenceList<char>();
         stack2.Push('a');
+        stack2.PrintStack();
         stack2.Push('b');
+        stack2.PrintStack();
         stack2.Push('c');
         stack2.PrintStack("stack初始值：\n");
         temp = stack2.Pop();
@@ -156,7 +158,7 @@ public class MainPageModule:Panel
         stack2.PrintStack("stack值：\n");
 
         Debug.Log("---------------单链表实现的Stack测试");
-        Stack_SequenceList<char> stack3 = new Stack_SequenceList<char>();
+        Stack_LinkedList<char> stack3 = new Stack_LinkedList<char>();
         stack3.Push('a');
         stack3.Push('b');
         stack3.Push('c');

@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using DataStructure.LineTable;
 using UnityEngine;
+using Util.Array;
 
 namespace DataStructure.LineTable
 {
@@ -210,19 +211,7 @@ namespace DataStructure.LineTable
 
         public override string ToString()
         {
-            StringBuilder str = new StringBuilder();
-            for (int i = 0; i < count; i++)
-            {
-                if (data[i] != null)
-                {
-                    str.Append("data[");
-                    str.Append(i.ToString());
-                    str.Append("]:");
-                    str.Append(data[i].ToString());
-                    str.Append("\n");
-                }
-            }
-            return str.ToString();
+            return ArrayUtil<T>.ArrayToString(data, 0, count - 1);
         }
     }
 }
