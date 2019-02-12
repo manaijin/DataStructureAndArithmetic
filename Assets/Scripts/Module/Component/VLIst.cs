@@ -6,37 +6,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Module.Component
 {
     public class VLIst: Framwork.Component
     {
-        private delegate void SetItemFunction(System.Object item, int index);
-        SetItemFunction itemFunction;
+        public delegate GameObject SetItemFunction(int index);
+        public SetItemFunction itemFunction;
+        private Transform content;
 
         public VLIst()
         {
             component = LoadResources.LoadPrefab("Prefab/Custom/V_list");
+            content = component.transform.Find("content");
         }
 
         public VLIst(GameObject _component)
         {
             component = _component;
+            content = component.transform.Find("content");
         }
 
-        public ArrayList dataSource
+        private int _dataCount;
+
+        public int dataCount
         {
-            get { return dataSource;}
+            get { return _dataCount; }
             set
             {
-                dataSource = value;
+                _dataCount = value;
+                Framwork.Component.removeAllChilds(content);
                 if (itemFunction == null)
                     return;
-                for (int i = 0; i < value.Count; i++)
+                for (int i = 0; i < _dataCount; i++)
                 {
-                    itemFunction(dataSource[i], i);
+                    GameObject item = itemFunction(i);
+                    AddChild(item);
                 }
             }
+        }
+
+        public void AddChild(GameObject item)
+        {
+            item.transform.SetParent(content);
         }
 
         public override void Dispose()

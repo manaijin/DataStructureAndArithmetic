@@ -27,6 +27,12 @@ public class LoadResources:MonoBehaviour
         return obj;
     }
 
+    public static void Destory(GameObject obj)
+    {
+        Destroy(obj);
+        Resources.UnloadUnusedAssets();
+    }
+
     /// <summary>
     /// 加载Resources文本文件
     /// </summary>

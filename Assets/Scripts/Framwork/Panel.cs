@@ -26,6 +26,23 @@ namespace Framwork
             
         }
 
+        /// <summary>
+        /// 移除所有子节点
+        /// </summary>
+        /// <param name="obj"></param>
+        public static void removeAllChilds(Transform  obj)
+        {
+            if (obj == null)
+            {
+                return;
+            }
+            for (int i = 0; i < obj.childCount; i++)
+            {
+                GameObject.Destroy(obj.GetChild(i).gameObject);
+            }
+            obj.DetachChildren();
+        }
+
         public virtual void Dispose()
         {
             RemoveListener();
@@ -34,6 +51,7 @@ namespace Framwork
                 Destroy(child);
             }
             Destroy(page);
+            page = null;
             Resources.UnloadUnusedAssets();
         }
     }

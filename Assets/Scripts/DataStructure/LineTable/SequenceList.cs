@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
+using DataStructure.LineTable;
 using UnityEngine;
-
 
 namespace DataStructure.LineTable
 {
+    /// <summary>
+    /// 顺序表
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class SequenceList<T>: ILineTable<T>
     {
         private T[] data;
@@ -16,8 +18,9 @@ namespace DataStructure.LineTable
             data = new T[size];
         }
 
-        public SequenceList():this(10)
+        public SequenceList()
         {
+            data = new T[100];
         }
 
         /// <summary>
@@ -25,12 +28,12 @@ namespace DataStructure.LineTable
         /// </summary>
         /// <param name="item"></param>
         /// <param name="index"></param>
-        public void Insect(T item, int index = -100000)
+        public void Insert(T item, int index = -100000)
         {
             //在末尾添加一个元素
             if (index == -100000)
             {
-                Insect(item, count);
+                Insert(item, count);
                 return;
             }
 
@@ -168,13 +171,13 @@ namespace DataStructure.LineTable
             {
                 if (data[i].Equals(item))
                 {
-                    list.Insect(i);
+                    list.Insert(i);
                     if (!isAll)
                         return list;
                 }
             }
             if(list.count == 0)
-                list.Insect(-1);
+                list.Insert(-1);
             return list;
         }
 
@@ -193,9 +196,17 @@ namespace DataStructure.LineTable
             data = new T[data.Length];
         }
 
-        public void PrintList(string prefixion = "")
+        public string PrintList(string prefixion = "")
         {
             StringBuilder str = new StringBuilder(prefixion);
+            str.Append(ToString());
+            Debug.Log(str);
+            return str.ToString();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder str = new StringBuilder();
             for (int i = 0; i < count; i++)
             {
                 if (data[i] != null)
@@ -207,7 +218,7 @@ namespace DataStructure.LineTable
                     str.Append("\n");
                 }
             }
-            Debug.Log(str);
+            return str.ToString();
         }
     }
 }
