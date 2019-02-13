@@ -32,7 +32,8 @@ public class MainPageModule:Panel
         VList.dataCount = 1;
         //TestLinkedList();
         //TestDoubleLinkedList();
-        TestStack();
+        //TestStack();
+        TestQueue();
     }
 
     public override void AddListener()
@@ -55,7 +56,7 @@ public class MainPageModule:Panel
             case 0:
                 item = LoadResources.LoadPrefab("Prefab/Custom/Button");
                 item.transform.Find("Text").GetComponent<Text>().text = "线性表";
-                Debug.Log(item.GetComponent<Button>().name);
+                //Debug.Log(item.GetComponent<Button>().name);
                 Button btn = (Button)item.GetComponent<Button>();
                 btn.onClick.AddListener(OnClickLineTable);
                 break;
@@ -167,6 +168,49 @@ public class MainPageModule:Panel
         Debug.Log("pop出：" + temp);
         stack3.PrintStack("stack值：\n");
 
+    }
+
+    private void TestQueue()
+    {
+        Debug.Log("--------------BCL的Queue测试");
+        Queue<char> queue = new Queue<char>();
+        queue.Enqueue('a');
+        queue.Enqueue('b');
+        queue.Enqueue('c');
+        Debug.Log("添加a/b/c,初始队列数量：" + queue.Count);
+        char temp = queue.Dequeue();
+        Debug.Log("出队：" + temp);
+        Debug.Log("队列：" + queue.Count);
+
+        Debug.Log("--------------顺序表实现的Queue测试");
+        Queue_SequenceList<char> queue2 = new Queue_SequenceList<char>(3);
+        queue2.Enqueue('a');
+        queue2.Enqueue('b');
+        queue2.Enqueue('c');
+        queue2.PrintQueue("初始队列：\n");
+        queue2.PrintQueue("出队：" + queue2.Dequeue() + "\n");
+        queue2.PrintQueue("出队：" + queue2.Dequeue() + "\n");
+        queue2.Enqueue('a');
+        queue2.PrintQueue("入队：a\n");
+        queue2.PrintQueue("出队：" + queue2.Dequeue() + "\n");
+        queue2.Enqueue('b');
+        queue2.PrintQueue("入队：b\n");
+        queue2.PrintQueue("出队：" + queue2.Dequeue() + "\n");
+
+        Debug.Log("--------------链表实现的Queue测试");
+        Queue_LinkedList<char> queue3 = new Queue_LinkedList<char>();
+        queue3.Enqueue('a');
+        queue3.Enqueue('b');
+        queue3.Enqueue('c');
+        queue3.PrintQueue("初始队列：\n");
+        queue3.PrintQueue("出队：" + queue3.Dequeue() + "\n");
+        queue3.PrintQueue("出队：" + queue3.Dequeue() + "\n");
+        queue3.Enqueue('a');
+        queue3.PrintQueue("入队：a\n");
+        queue3.PrintQueue("出队：" + queue3.Dequeue() + "\n");
+        queue3.Enqueue('b');
+        queue3.PrintQueue("入队：b\n");
+        queue3.PrintQueue("出队：" + queue3.Dequeue() + "\n");
     }
 
     public override void Dispose()

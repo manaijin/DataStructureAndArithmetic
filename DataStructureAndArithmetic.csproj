@@ -12,15 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2018.3.5f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -665,8 +662,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DataStructure\LineTable\ILineTable.cs" />
+    <Compile Include="Assets\Scripts\DataStructure\LineTable\IQueue.cs" />
     <Compile Include="Assets\Scripts\DataStructure\LineTable\IStack.cs" />
     <Compile Include="Assets\Scripts\DataStructure\LineTable\LinkedList.cs" />
+    <Compile Include="Assets\Scripts\DataStructure\LineTable\Queue.cs" />
     <Compile Include="Assets\Scripts\DataStructure\LineTable\SequenceList.cs" />
     <Compile Include="Assets\Scripts\DataStructure\LineTable\Stack.cs" />
     <Compile Include="Assets\Scripts\Framwork\Component.cs" />
@@ -687,6 +686,7 @@
     <None Include="Assets\Resources\Text\栈.txt" />
     <None Include="Assets\Resources\Text\线性表.txt" />
     <None Include="Assets\Resources\Text\链表.txt" />
+    <None Include="Assets\Resources\Text\队列.txt" />
     <None Include="Assets\Resources\Text\顺序表.txt" />
     <None Include="Packages\com.unity.collab-proxy\Editor\Resources\Styles\CollabHistoryCommon.uss" />
     <None Include="Packages\com.unity.collab-proxy\Editor\Resources\Styles\CollabHistoryDark.uss" />
@@ -704,7 +704,6 @@
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\PackageSearchToolbar.uxml" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\PackageStatusBar.uxml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>
