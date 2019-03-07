@@ -114,7 +114,7 @@ namespace DataStructure.LineTable
         }
 
         /// <summary>
-        /// 取得队头元素
+        /// 取得队首元素
         /// </summary>
         /// <returns></returns>
         public T Peek()
