@@ -27,6 +27,10 @@ public class LoadResources:MonoBehaviour
         return obj;
     }
 
+    /// <summary>
+    /// 删除对象并清理资源
+    /// </summary>
+    /// <param name="obj"></param>
     public static void Destory(GameObject obj)
     {
         Destroy(obj);

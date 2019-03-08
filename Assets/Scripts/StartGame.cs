@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using Framwork.Path;
+
 
 public class StartGame : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class StartGame : MonoBehaviour
     void Start()
     {
         Init();
-        if (root.page)
+        if (root.Root)
         {
-            GUIList.SetItemSize(200,100, root.page.transform.Find("panel_Main/V_list"));
+            GUIList.SetItemSize(200,100, root.Root.transform.Find("panel_Main/V_list"));
         }
         else
         {
@@ -20,9 +21,7 @@ public class StartGame : MonoBehaviour
 
     private void Init()
     {
+        //加载主页面
         root = new MainPageModule();
     }
-
-
-
 }

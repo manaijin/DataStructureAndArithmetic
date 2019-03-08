@@ -9,15 +9,30 @@ namespace DataStructure.String
 {
     class StringDS: IString
     {
+        /// <summary>
+        /// 字符数量
+        /// </summary>
         private int Count = 0;
+        /// <summary>
+        /// 字符数据
+        /// </summary>
         private char[] Data;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="size">字符串容量</param>
         public StringDS(int size = 100)
         {
             Data = new char[size];
             Count = 0;
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="data">字符串初始值</param>
+        /// <param name="size">字符串容量</param>
         public StringDS(char data,int size = 100)
         {
             Data = new char[size];
@@ -25,6 +40,11 @@ namespace DataStructure.String
             Count = 1;
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="data">字符串初始值</param>
+        /// <param name="size">字符串容量</param>
         public StringDS(char[] data, int size = 100)
         {
             Data = new char[size];
@@ -32,6 +52,11 @@ namespace DataStructure.String
             Count = data.Length;
         }
 
+        /// <summary>
+        /// 索引器
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public char this[int index]
         {
             get
@@ -56,6 +81,10 @@ namespace DataStructure.String
             }
         }
 
+        /// <summary>
+        /// 获取字符串长度
+        /// </summary>
+        /// <returns></returns>
         public int GetLength()
         {
             return Count;
@@ -107,16 +136,33 @@ namespace DataStructure.String
             return data;
         }
 
+        /// <summary>
+        /// 插入字符串操作
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public StringDS Insert(int index, StringDS str)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 删除字符串操作
+        /// </summary>
+        /// <param name="index">起始节点</param>
+        /// <param name="len">删除长度</param>
+        /// <returns></returns>
         public StringDS Delete(int index, int len)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 连接字符串
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public StringDS Concat(StringDS s)
         {
             throw new NotImplementedException();

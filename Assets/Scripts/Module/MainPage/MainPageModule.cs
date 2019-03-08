@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using DataStructure.LineTable;
 using Framwork;
+using Framwork.Path;
 using Module.Component;
 using UnityEngine.UI;
 using UnityEngine;
@@ -8,32 +9,47 @@ using UnityEngine;
 
 public class MainPageModule:Panel
 {
+    /// <summary>
+    /// 背景图片
+    /// </summary>
     public Image ImgBg;
+    /// <summary>
+    /// 标题文本
+    /// </summary>
     public Text TxtTitle;
+    /// <summary>
+    /// 按钮列表
+    /// </summary>
     public VLIst VList;
+    /// <summary>
+    /// 线性表页面
+    /// </summary>
     private Transform LineTablePanel;
 
-    public MainPageModule():base() {
-        page = LoadResources.LoadPrefab("Prefab/MainPage/Root");
-        if (!page)
+    public MainPageModule():base()
+    {
+        string rootPath = ResourcesPath.Ins.GetPath("Root.prefab");
+        Root = LoadResources.LoadPrefab(rootPath);
+        if (!Root)
         {
-            Debug.Log("Prefab/MainPage/Root不存在");
+            Debug.Log(rootPath + "路径有误");
             return;
         }
-        ImgBg = page.transform.Find("panel_Main/img_Bg").GetComponent<Image>();
-        TxtTitle = page.transform.Find("panel_Main/txt_title").GetComponent<Text>();
-        VList = new VLIst(page.transform.Find("panel_Main/V_list").gameObject);
+        ImgBg = Root.transform.Find("panel_Main/img_Bg").GetComponent<Image>();
+        TxtTitle = Root.transform.Find("panel_Main/txt_title").GetComponent<Text>();
+        VList = new VLIst(Root.transform.Find("panel_Main/V_list").gameObject);
         Init();
     }
 
     private void Init()
     {
-        VList.itemFunction = new VLIst.SetItemFunction(ListFunction);
-        VList.dataCount = 1;
+        
+        VList.ItemFunction = ListFunction;
+        VList.DataCount = 1;
         //TestLinkedList();
         //TestDoubleLinkedList();
         //TestStack();
-        TestQueue();
+        //TestQueue();
     }
 
     public override void AddListener()
@@ -48,31 +64,50 @@ public class MainPageModule:Panel
 
     }
 
+    /// <summary>
+    /// 列表函数
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     public GameObject ListFunction(int index)
     {
         GameObject item = null;
         switch (index)
         {
             case 0:
-                item = LoadResources.LoadPrefab("Prefab/Custom/Button");
+                string path = ResourcesPath.Ins.GetPath("Button.prefab");
+                item = LoadResources.LoadPrefab(path);
+                if (!item)
+                {
+                    Debug.LogError("按钮资源路径:"+ "path" + "有误");
+                    break;
+                }
                 item.transform.Find("Text").GetComponent<Text>().text = "线性表";
-                //Debug.Log(item.GetComponent<Button>().name);
-                Button btn = (Button)item.GetComponent<Button>();
+
+                Button btn = item.GetComponent<Button>();
+                if (!btn)
+                {
+                    Debug.LogError("缺少Button组件");
+                    break;
+                }
                 btn.onClick.AddListener(OnClickLineTable);
                 break;
         }
         return item;
     }
 
+    /// <summary>
+    /// 线性表按钮回调
+    /// </summary>
     public void OnClickLineTable()
     {
         Debug.Log("OnClickLineTable");
         if (!LineTablePanel)
             LineTablePanel = LoadResources.LoadPrefab("Prefab/LineTablePanel").transform;
 
-        if (LineTablePanel && page)
+        if (LineTablePanel && Root)
         {
-            LineTablePanel.parent = page.transform;
+            LineTablePanel.parent = Root.transform;
             LineTablePanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             LineTablePanel.Find("TextPanel/Label").GetComponent<Text>().text = LoadResources.LoadText("Text/线性表");
         }
@@ -80,6 +115,9 @@ public class MainPageModule:Panel
         TestLineTable();
     }
 
+    /// <summary>
+    /// 线性表测试
+    /// </summary>
     private void TestLineTable()
     {
         Debug.Log("--------------顺序表测试");
@@ -97,6 +135,9 @@ public class MainPageModule:Panel
         Debug.Log("顺序表是否为空：" + data.IsEmpty());
     }
 
+    /// <summary>
+    /// 链表测试
+    /// </summary>
     private void TestLinkedList()
     {
         Debug.Log("--------------单链表测试");
@@ -108,14 +149,17 @@ public class MainPageModule:Panel
         data.Insert(2);
         data.PrintList();
         data.Insert(3, 0);
-        data.PrintList("顺序表初始值：\n");
+        data.PrintList("链表初始值：\n");
         data.DeleteByIndex(0);
         data.PrintList("删除第一个元素：\n");
         data.FindOfIndex(0, false).PrintList("表中等于0的第一个下标：");
         data.FindOfIndex(0).PrintList("表中等于0的所有下标：");
-        Debug.Log("顺序表是否为空：" + data.IsEmpty());
+        Debug.Log("链表是否为空：" + data.IsEmpty());
     }
 
+    /// <summary>
+    /// 双链表测试
+    /// </summary>
     private void TestDoubleLinkedList()
     {
         Debug.Log("--------------双链表测试");
@@ -127,14 +171,17 @@ public class MainPageModule:Panel
         data.Insert(2);
         data.PrintList();
         data.Insert(3, 0);
-        data.PrintList("顺序表初始值：\n");
+        data.PrintList("双链表初始值：\n");
         data.DeleteByIndex(0);
         data.PrintList("删除第一个元素：\n");
         data.FindOfIndex(0, false).PrintList("表中等于0的第一个下标：");
         data.FindOfIndex(0).PrintList("表中等于0的所有下标：");
-        Debug.Log("顺序表是否为空：" + data.IsEmpty());
+        Debug.Log("双链表是否为空：" + data.IsEmpty());
     }
 
+    /// <summary>
+    /// 栈测试
+    /// </summary>
     private void TestStack()
     {
         Debug.Log("--------------BCL的Stack测试");
@@ -170,6 +217,9 @@ public class MainPageModule:Panel
 
     }
 
+    /// <summary>
+    /// 队列测试
+    /// </summary>
     private void TestQueue()
     {
         Debug.Log("--------------BCL的Queue测试");
