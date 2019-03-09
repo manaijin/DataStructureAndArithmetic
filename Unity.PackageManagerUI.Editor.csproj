@@ -732,6 +732,7 @@
     <Compile Include="Packages\com.unity.package-manager-ui\Editor\Sources\UI\PackageStatusBar.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Text\Arithmetic\直接插入排序.txt" />
     <None Include="Assets\Resources\Text\ResourceDir.txt" />
     <None Include="Assets\Resources\Text\循环链表.txt" />
     <None Include="Assets\Resources\Text\栈.txt" />

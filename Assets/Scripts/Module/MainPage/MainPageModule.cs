@@ -5,6 +5,8 @@ using Framwork.Path;
 using Module.Component;
 using UnityEngine.UI;
 using UnityEngine;
+using Arithmetic;
+using Util.Array;
 
 
 public class MainPageModule:Panel
@@ -50,6 +52,7 @@ public class MainPageModule:Panel
         //TestDoubleLinkedList();
         //TestStack();
         //TestQueue();
+        TestSort();
     }
 
     public override void AddListener()
@@ -261,6 +264,15 @@ public class MainPageModule:Panel
         queue3.Enqueue('b');
         queue3.PrintQueue("入队：b\n");
         queue3.PrintQueue("出队：" + queue3.Dequeue() + "\n");
+    }
+
+    //测试排序算法
+    public void TestSort()
+    {
+        float[] a = new float[] { 12, 5, 7, 3, 6, 19, 8 };
+        a = SortArithmetic.StraightInsertionSort(a);
+        Debug.Log(ArrayUtil<float>.ArrayToString(a));
+
     }
 
     public override void Dispose()

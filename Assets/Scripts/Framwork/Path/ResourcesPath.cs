@@ -39,7 +39,6 @@ namespace Framwork.Path
                 keyAndVel = tempStr[i].Split(',');
                 if (keyAndVel != null && keyAndVel.Length == 2)
                 {
-                    keyAndVel[1] = keyAndVel[1].Replace("\n", "");
                     keyAndVel[1] = keyAndVel[1].Replace("\r", "");
                     Paths.Add(keyAndVel[0],keyAndVel[1]);
                 }

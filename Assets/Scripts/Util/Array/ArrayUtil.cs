@@ -11,7 +11,7 @@ namespace Util.Array
         /// <summary>
         /// 输出数组的字符串，默认firstIndex为0，lastIndex为数组最短index
         /// </summary>
-        /// <param name="arr">元数据</param>
+        /// <param name="arr">源数据</param>
         /// <param name="firstIndex">起始下标</param>
         /// <param name="lastIndex">结束下标</param>
         /// <returns></returns>
