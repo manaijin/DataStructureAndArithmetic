@@ -12,15 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2018.3.5f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -684,12 +681,15 @@
     <Compile Include="Assets\Scripts\Module\MainPage\MainPageModule.cs" />
     <Compile Include="Assets\Scripts\ScreenSet.cs" />
     <Compile Include="Assets\Scripts\StartGame.cs" />
-    <Compile Include="Assets\Scripts\Util\Array\ArrayUtil.cs" />
+    <Compile Include="Assets\Scripts\Util\Data\ArrayUtil.cs" />
+    <Compile Include="Assets\Scripts\Util\Data\ListUtil.cs" />
     <Compile Include="Assets\Scripts\Util\GUI\GUIList.cs" />
     <Compile Include="Assets\Scripts\Util\GUI\GUITextPanel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Text\Arithmetic\快速排序.txt" />
     <None Include="Assets\Resources\Text\Arithmetic\直接插入排序.txt" />
+    <None Include="Assets\Resources\Text\Arithmetic\简单选择排序.txt" />
     <None Include="Assets\Resources\Text\ResourceDir.txt" />
     <None Include="Assets\Resources\Text\循环链表.txt" />
     <None Include="Assets\Resources\Text\栈.txt" />

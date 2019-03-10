@@ -6,7 +6,7 @@ using Module.Component;
 using UnityEngine.UI;
 using UnityEngine;
 using Arithmetic;
-using Util.Array;
+using Util.Data;
 
 
 public class MainPageModule:Panel
@@ -266,11 +266,18 @@ public class MainPageModule:Panel
         queue3.PrintQueue("出队：" + queue3.Dequeue() + "\n");
     }
 
-    //测试排序算法
+    /// <summary>
+    /// 测试排序算法
+    /// </summary>
     public void TestSort()
     {
-        float[] a = new float[] { 12, 5, 7, 3, 6, 19, 8 };
-        a = SortArithmetic.StraightInsertionSort(a);
+        float[] a = new float[] { 12, 5, 6, 7, 3, 6, 19, 8 };
+        //直接插入排序
+        //a = SortArithmetic<float>.StraightInsertionSort(a);
+        //简单选择排序
+        //a = SortArithmetic<float>.SelectionSort(a);
+        //
+
         Debug.Log(ArrayUtil<float>.ArrayToString(a));
 
     }

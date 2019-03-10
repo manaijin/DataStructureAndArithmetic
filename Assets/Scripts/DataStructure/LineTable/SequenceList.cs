@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using DataStructure.LineTable;
 using UnityEngine;
-using Util.Array;
+using Util.Data;
 
 namespace DataStructure.LineTable
 {

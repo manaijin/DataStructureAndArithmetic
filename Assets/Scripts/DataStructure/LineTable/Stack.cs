@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using Util.Array;
+using Util.Data;
 
 namespace DataStructure.LineTable
 {

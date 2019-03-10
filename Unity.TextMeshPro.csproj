@@ -722,7 +722,9 @@
     <Compile Include="Packages\com.unity.textmeshpro\Scripts\Runtime\TMPro_UGUI_Private.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Text\Arithmetic\快速排序.txt" />
     <None Include="Assets\Resources\Text\Arithmetic\直接插入排序.txt" />
+    <None Include="Assets\Resources\Text\Arithmetic\简单选择排序.txt" />
     <None Include="Assets\Resources\Text\ResourceDir.txt" />
     <None Include="Assets\Resources\Text\循环链表.txt" />
     <None Include="Assets\Resources\Text\栈.txt" />
