@@ -84,17 +84,62 @@ namespace Arithmetic
         /// </summary>
         /// <param name="data"></param>
         /// <param name="sortType"></param>
+        /// <param name="firstIndex"></param>
+        /// <param name="secondIndex"></param>
         /// <returns></returns>
-        public static T[] QuickSort(T[] data, SortType sortType = SortType.DESC)
+        public static T[] QuickSort(T[] data,SortType sortType = SortType.DESC, int firstIndex = 0, int secondIndex = -1)
         {
+            if (secondIndex == -1)
+                secondIndex = data.Length - 1;
 
+            if (firstIndex >= secondIndex)
+                return data;
 
+            int left = firstIndex;
+            int right = secondIndex;
+            dynamic key = data[firstIndex];
+
+            //从数组两端相向遍历，直到两者下标相等
+            while (left < right)
+            {
+                //从后向前比较：找到大于等于key值的数
+                while (left < right)
+                {
+                    if ((int)sortType * (data[right] - key) >= 0)
+                    {
+                        data[left] = data[right];
+                        break;
+                    }
+                    else
+                    {
+                        right--;
+                    }
+                }
+
+                //从前向后比较：找到小于key值的数
+                while (left < right)
+                {
+                    if ((int)sortType * (data[left] - key) < 0)
+                    {
+                        data[right] = data[left];
+                        break;
+                    }
+                    else
+                    {
+                        left++;
+                    }
+                }
+            }
+
+            //此时left == right
+            data[left] = key;
+            data = QuickSort(data, sortType, firstIndex, left - 1);
+            data = QuickSort(data, sortType, left + 1, secondIndex);
             return data;
         }
 
         public enum SortType
         {
-
             DESC = 1,
             ASC = -1
         }

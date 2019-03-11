@@ -276,7 +276,8 @@ public class MainPageModule:Panel
         //a = SortArithmetic<float>.StraightInsertionSort(a);
         //简单选择排序
         //a = SortArithmetic<float>.SelectionSort(a);
-        //
+        //快速排序
+        a = SortArithmetic<float>.QuickSort(a);
 
         Debug.Log(ArrayUtil<float>.ArrayToString(a));
 
