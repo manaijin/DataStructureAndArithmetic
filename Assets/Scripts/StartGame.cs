@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Framwork.Path;
 
 
 public class StartGame : MonoBehaviour

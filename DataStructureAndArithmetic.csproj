@@ -12,12 +12,15 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2018.3.5f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -671,13 +674,15 @@
     <Compile Include="Assets\Scripts\DataStructure\LineTable\Stack.cs" />
     <Compile Include="Assets\Scripts\DataStructure\String\IString.cs" />
     <Compile Include="Assets\Scripts\DataStructure\String\StringDS.cs" />
-    <Compile Include="Assets\Scripts\Framwork\Path\ResourcesPath.cs" />
-    <Compile Include="Assets\Scripts\Framwork\UI\Component.cs" />
-    <Compile Include="Assets\Scripts\Framwork\UI\IComponent.cs" />
-    <Compile Include="Assets\Scripts\Framwork\UI\IPage.cs" />
-    <Compile Include="Assets\Scripts\Framwork\UI\Panel.cs" />
+    <Compile Include="Assets\Scripts\Manager\Path\ResourcesPath.cs" />
+    <Compile Include="Assets\Scripts\Framwork\UIBase\Component.cs" />
+    <Compile Include="Assets\Scripts\Framwork\UIBase\IComponent.cs" />
+    <Compile Include="Assets\Scripts\Framwork\UIBase\IPage.cs" />
+    <Compile Include="Assets\Scripts\Framwork\UIBase\Panel.cs" />
     <Compile Include="Assets\Scripts\Manager\ResourcesManager.cs" />
-    <Compile Include="Assets\Scripts\Module\Component\VLIst.cs" />
+    <Compile Include="Assets\Scripts\Framwork\Component\CustomButton.cs" />
+    <Compile Include="Assets\Scripts\Framwork\Component\VLIst.cs" />
+    <Compile Include="Assets\Scripts\Manager\StringManager.cs" />
     <Compile Include="Assets\Scripts\Module\MainPage\MainPageModule.cs" />
     <Compile Include="Assets\Scripts\ScreenSet.cs" />
     <Compile Include="Assets\Scripts\StartGame.cs" />

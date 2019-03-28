@@ -14,7 +14,7 @@ public class GUIList
     public static void AddItem(GameObject item,Transform list)
     {
         Transform content = list.Find("content");
-        item.transform.parent = content;
+        item.transform.SetParent(content);
         LayoutRebuilder.ForceRebuildLayoutImmediate(content.parent.GetComponent<RectTransform>());
     }
 

@@ -1,24 +1,25 @@
-﻿using System;
+﻿using Manager.Path;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-public class LoadResources:MonoBehaviour
+public static class ResourcesManager
 {
     /// <summary>
-    /// 加载Prefab
+    /// 根据路径加载Prefab
     /// </summary>
     /// <param name="path">路径</param>
     /// <returns></returns>
-    public static GameObject LoadPrefab(string path)
+    public static GameObject LoadPrefabByPath(string path)
     {
         Object prefabObj = Resources.Load(path);
         GameObject obj = null;
         if (prefabObj)
         {
-            obj = Instantiate(prefabObj) as GameObject;
+            obj = GameObject.Instantiate(prefabObj) as GameObject;
         }
         else
         {
@@ -28,12 +29,26 @@ public class LoadResources:MonoBehaviour
     }
 
     /// <summary>
+    /// 根据文件名称加载Prefab
+    /// </summary>
+    /// <returns></returns>
+    public static GameObject LoadPrfabByName(string name)
+    {
+        GameObject Root;
+        string rootPath = ResourcesPath.Ins.GetPath("Root.prefab");
+        Root = ResourcesManager.LoadPrefabByPath(rootPath);
+        if(!Root)
+            Debug.LogError("加载路径：" + rootPath + "有误");
+        return Root;
+    }
+
+    /// <summary>
     /// 删除对象并清理资源
     /// </summary>
     /// <param name="obj"></param>
     public static void Destory(GameObject obj)
     {
-        Destroy(obj);
+        GameObject.Destroy(obj);
         Resources.UnloadUnusedAssets();
     }
 

@@ -138,6 +138,87 @@ namespace Arithmetic
             return data;
         }
 
+        /// <summary>
+        /// 归并排序
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="sortType"></param>
+        /// <returns></returns>
+        public static T[] MergeSort(T[] data, SortType sortType = SortType.DESC, int start = 0, int end = -1)
+        {
+            if (end == -1)
+                end = data.Length - 1;
+
+            if (start >= end)
+                return data;
+
+            int mid = (start + end) / 2;
+            data = MergeSort(data, sortType, start, mid);
+            data = MergeSort(data, sortType, mid + 1, end);
+            data = Merge(data,start,mid,end);
+            return data;
+        }
+
+        /// <summary>
+        /// start~mid为sortType序，mid+1~end为sortType序，合并之后start~end为sortType序
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="start"></param>
+        /// <param name="mid"></param>
+        /// <param name="end"></param>
+        /// <param name="sortType"></param>
+        /// <returns></returns>
+        public static T[] Merge(T[] data, int start, int mid, int end, SortType sortType = SortType.DESC)
+        {
+            if (start >= end || mid < start || mid >= end)
+                return data;
+
+            T[] tempData = new T[end - start + 1];//用于存储合并的数据
+            int firstIndex = start, secondIndex = mid + 1 ,tempIndex = 0;
+
+            while (firstIndex != mid + 1 || secondIndex != end + 1)
+            {
+                if (firstIndex == mid + 1)
+                {
+                    tempData[tempIndex] = data[secondIndex];
+                    tempIndex++;
+                    secondIndex++;
+                    continue;
+                }
+
+                if (secondIndex == end + 1)
+                {
+                    tempData[tempIndex] = data[firstIndex];
+                    tempIndex++;
+                    firstIndex++;
+                    continue;
+                }
+
+                dynamic x = data[firstIndex];
+                dynamic y = data[secondIndex];
+                if ((int)sortType * (x - y)> 0)
+                {
+                    tempData[tempIndex] = data[firstIndex];
+                    tempIndex++;
+                    firstIndex++;
+                }
+                else
+                {
+                    tempData[tempIndex] = data[secondIndex];
+                    tempIndex++;
+                    secondIndex++;
+                }
+            }
+
+            //将合并数据赋值到源数据中
+            for (int i = 0, j = start; j <= end; i++, j++)
+            {
+                data[j] = tempData[i];
+            }
+
+            return data;
+        }
+
         public enum SortType
         {
             DESC = 1,

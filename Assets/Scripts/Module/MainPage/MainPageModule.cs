@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using DataStructure.LineTable;
-using Framwork;
-using Framwork.Path;
-using Module.Component;
+using Framwork.UIBase;
+using Framwork.Component;
 using UnityEngine.UI;
 using UnityEngine;
 using Arithmetic;
 using Util.Data;
+using Manager.Path;
+using System;
 
-
-public class MainPageModule:Panel
+public class MainPageModule : Panel
 {
     /// <summary>
     /// 背景图片
@@ -28,15 +28,11 @@ public class MainPageModule:Panel
     /// </summary>
     private Transform LineTablePanel;
 
-    public MainPageModule():base()
+    public MainPageModule() : base()
     {
-        string rootPath = ResourcesPath.Ins.GetPath("Root.prefab");
-        Root = LoadResources.LoadPrefab(rootPath);
+        Root = ResourcesManager.LoadPrfabByName("Root.prefab");
         if (!Root)
-        {
-            Debug.Log(rootPath + "路径有误");
             return;
-        }
         ImgBg = Root.transform.Find("panel_Main/img_Bg").GetComponent<Image>();
         TxtTitle = Root.transform.Find("panel_Main/txt_title").GetComponent<Text>();
         VList = new VLIst(Root.transform.Find("panel_Main/V_list").gameObject);
@@ -45,20 +41,20 @@ public class MainPageModule:Panel
 
     private void Init()
     {
-        
         VList.ItemFunction = ListFunction;
         VList.DataCount = 1;
         //TestLinkedList();
         //TestDoubleLinkedList();
         //TestStack();
         //TestQueue();
-        TestSort();
+        //TestSort();
+
     }
 
     public override void AddListener()
     {
         base.AddListener();
-        
+
     }
 
     public override void RemoveListener()
@@ -72,28 +68,16 @@ public class MainPageModule:Panel
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
-    public GameObject ListFunction(int index)
+    public Framwork.UIBase.Component ListFunction(int index)
     {
-        GameObject item = null;
+        Framwork.UIBase.Component item = null;
         switch (index)
         {
             case 0:
-                string path = ResourcesPath.Ins.GetPath("Button.prefab");
-                item = LoadResources.LoadPrefab(path);
-                if (!item)
-                {
-                    Debug.LogError("按钮资源路径:"+ "path" + "有误");
-                    break;
-                }
-                item.transform.Find("Text").GetComponent<Text>().text = "线性表";
-
-                Button btn = item.GetComponent<Button>();
-                if (!btn)
-                {
-                    Debug.LogError("缺少Button组件");
-                    break;
-                }
-                btn.onClick.AddListener(OnClickLineTable);
+                CustomButton _item = new CustomButton();
+                _item.text.text = "线性表";
+                _item.btn.onClick.AddListener(OnClickLineTable);
+                item = _item;
                 break;
         }
         return item;
@@ -104,15 +88,17 @@ public class MainPageModule:Panel
     /// </summary>
     public void OnClickLineTable()
     {
+#if UNITY_EDITOR
         Debug.Log("OnClickLineTable");
+#endif 
         if (!LineTablePanel)
-            LineTablePanel = LoadResources.LoadPrefab("Prefab/LineTablePanel").transform;
+            LineTablePanel = ResourcesManager.LoadPrefabByPath("Prefab/LineTablePanel").transform;
 
         if (LineTablePanel && Root)
         {
-            LineTablePanel.parent = Root.transform;
+            LineTablePanel.SetParent(Root.transform);
             LineTablePanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-            LineTablePanel.Find("TextPanel/Label").GetComponent<Text>().text = LoadResources.LoadText("Text/线性表");
+            LineTablePanel.Find("TextPanel/Label").GetComponent<Text>().text = ResourcesManager.LoadText("Text/线性表");
         }
 
         TestLineTable();
@@ -123,9 +109,13 @@ public class MainPageModule:Panel
     /// </summary>
     private void TestLineTable()
     {
+#if UNITY_EDITOR
         Debug.Log("--------------顺序表测试");
+#endif
         SequenceList<int> data = new SequenceList<int>(100);
+#if UNITY_EDITOR
         Debug.Log("顺序表是否为空：" + data.IsEmpty());
+#endif
         data.Insert(10);
         data.Insert(10);
         data.Insert(30, 0);
@@ -135,7 +125,10 @@ public class MainPageModule:Panel
         data.PrintList("删除第一个元素：\n");
         data.FindOfIndex(0, false).PrintList("表中等于0的第一个下标：");
         data.FindOfIndex(0).PrintList("表中等于0的所有下标：");
+#if UNITY_EDITOR
         Debug.Log("顺序表是否为空：" + data.IsEmpty());
+#endif
+        
     }
 
     /// <summary>
@@ -277,9 +270,11 @@ public class MainPageModule:Panel
         //简单选择排序
         //a = SortArithmetic<float>.SelectionSort(a);
         //快速排序
-        a = SortArithmetic<float>.QuickSort(a);
-
+        //a = SortArithmetic<float>.QuickSort(a);
+        //归并排序
+        a = SortArithmetic<float>.MergeSort(a);
         Debug.Log(ArrayUtil<float>.ArrayToString(a));
+
 
     }
 

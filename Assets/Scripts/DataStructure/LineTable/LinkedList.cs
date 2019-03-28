@@ -237,9 +237,7 @@ namespace DataStructure.LineTable
             LinkedListNode<T> tempNode = FirstNode;
             for (int i = 0; i < Count; i++)
             {
-                str.Append("data[");
-                str.Append(i.ToString());
-                str.Append("]:");
+                str.Append(System.String.Format(StringManager.DATA_INDEX, i));
                 str.Append(tempNode.Data);
                 str.Append("\n");
                 tempNode = tempNode.NextNode;
@@ -600,9 +598,7 @@ namespace DataStructure.LineTable
             DoubleLinkedListNode<T> tempNode = FirstNode;
             for (int i = 0; i < Count; i++)
             {
-                str.Append("data[");
-                str.Append(i.ToString());
-                str.Append("]:");
+                str.Append(System.String.Format(StringManager.DATA_INDEX, i));
                 str.Append(tempNode.Data);
                 str.Append("\n");
                 tempNode = tempNode.NextNode;
